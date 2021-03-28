@@ -1,0 +1,7 @@
+C:\Users\kosta\source\repos\Lab4Prog\Lab4Prog\obj\Debug\Lab4Prog.csprojAssemblyReference.cache
+C:\Users\kosta\source\repos\Lab4Prog\Lab4Prog\obj\Debug\Lab4Prog.csproj.CoreCompileInputs.cache
+C:\Users\kosta\source\repos\Lab4Prog\Lab4Prog\bin\Debug\Lab4Prog.exe.config
+C:\Users\kosta\source\repos\Lab4Prog\Lab4Prog\bin\Debug\Lab4Prog.exe
+C:\Users\kosta\source\repos\Lab4Prog\Lab4Prog\bin\Debug\Lab4Prog.pdb
+C:\Users\kosta\source\repos\Lab4Prog\Lab4Prog\obj\Debug\Lab4Prog.exe
+C:\Users\kosta\source\repos\Lab4Prog\Lab4Prog\obj\Debug\Lab4Prog.pdb
