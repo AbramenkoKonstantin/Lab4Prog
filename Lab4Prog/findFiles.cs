@@ -4,43 +4,20 @@ using System.IO;
 
 namespace Lab4Prog
 {
-    class findFiles
+    class FindFiles
     {
         private string pathToFile;
         private string keyword;
 
-        public findFiles(string pathToFile, string keyword)
+        public FindFiles(string pathToFile, string keyword)
         {
             this.pathToFile = pathToFile;
             this.keyword = keyword;
         }
 
-        public string PathToFile
-        {
-            get
-            {
-                return pathToFile;
-            }
-            set
-            {
-                pathToFile = value;
-            }
-        }
-
-        public string Keyword
-        {
-            get
-            {
-                return keyword;
-            }
-            set
-            {
-                keyword = value;
-            }
-        }
         public void GetInfo()
         {
-            DirectoryInfo di = new DirectoryInfo($@"{pathToFile}");
+            DirectoryInfo di = new DirectoryInfo(pathToFile);
 
             Console.WriteLine("Поиск файлов удовлетворяющих вашим условиям:");
             foreach (var fi in di.GetFiles($"*{keyword}*.txt", SearchOption.AllDirectories))

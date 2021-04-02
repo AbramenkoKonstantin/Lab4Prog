@@ -1,21 +1,28 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 
 namespace Lab4Prog
 {
-    class TextFile
+    [Serializable]
+    public class Xml
     {
         public string Name { get; set; }
         public string Surname { get; set; }
         public string MiddleName { get; set; }
-        public TextFile(string name, string surname, string middle)
+        public Xml()
+        {
+
+        }
+        public Xml(string name, string surname, string middle)
         {
             Name = name; Surname = surname; MiddleName = middle;
         }
         public void Serialize(FileStream fs)
         {
-            XmlSerializer bf = new XmlSerializer(this.GetType());
+            XmlSerializer bf = new XmlSerializer(this.GetType()); 
             bf.Serialize(fs, this);
             fs.Flush();
             fs.Close();
@@ -23,7 +30,7 @@ namespace Lab4Prog
         public void Deserialize(FileStream fs)
         {
             XmlSerializer bf = new XmlSerializer(this.GetType());
-            TextFile deserialized = (TextFile)bf.Deserialize(fs);
+            Xml deserialized = (Xml)bf.Deserialize(fs);
             Name = deserialized.Name;
             Surname = deserialized.Surname;
             MiddleName = deserialized.MiddleName;
@@ -33,5 +40,6 @@ namespace Lab4Prog
         {
             Console.WriteLine("Name={0} Surname={1} Middle={2}", Name, Surname, MiddleName);
         }
+
     }
 }
