@@ -48,10 +48,21 @@ namespace Lab4Prog
                     break;
 
                 case "3":
-                    Console.WriteLine("Введите путь: ");
+                    Console.Write("Введите путь: ");
                     string path = Console.ReadLine();
-                    FileEditor editor = new FileEditor(path);
-                    editor.GetInfo();
+                    Console.Write("Введите то, что хотите добавить в файл: ");
+                    string text = Console.ReadLine();
+                    FileEditor editor = new FileEditor(path, text);
+                    Caretaker caretaker = new Caretaker();
+                    editor.GetText(path);
+                    caretaker.SaveState(editor);
+                    editor.GetInfo(text);
+                    editor = new FileEditor(path, text);
+                    editor.GetText(path);
+                    caretaker.RestoreState(editor);
+                    editor.GetText(path);
+
+
                     break;
             }
             

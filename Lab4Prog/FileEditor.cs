@@ -4,16 +4,27 @@ using System.Text;
 
 namespace Lab4Prog
 {
-    class FileEditor
+    class FileEditor : IOriginator
     {
         private string path;
-        public string Text { get; set; }
+        public string text;
+
+        public FileEditor()
+        {
+
+        }
         public FileEditor(string path)
         {
             this.path = path;
         }
 
-        public void GetInfo()
+        public FileEditor(string path, string text)
+        {
+            this.path = path;
+            this.text = text;
+        }
+
+        public void GetText(string path)
         {
             try
             {
@@ -22,9 +33,19 @@ namespace Lab4Prog
                     Console.WriteLine(sr.ReadToEnd());
                 }
 
-                Console.Write("Введите то, что хотите добавить в файл:");
-                string text = Console.ReadLine();
+            }
 
+            catch (IOException e)
+            {
+                Console.WriteLine("Файл не может быть прочитан: ");
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public void GetInfo(string text)
+        {
+            try
+            {
                 using (StreamWriter outputFile = new StreamWriter(path, true))
                 {
                     outputFile.WriteLine(text);
@@ -35,6 +56,21 @@ namespace Lab4Prog
             {
                 Console.WriteLine("Файл не может быть прочитан: ");
                 Console.WriteLine(e.Message);
+            }
+        }
+
+        public object GetMemento()
+        {
+            return new Memento { text = this.text, path = this.path };
+        }
+
+        public void SetMemento(object memento)
+        {
+            if (memento is Memento)
+            {
+                var mem = memento as Memento;
+                text = mem.text;
+                path = mem.path;
             }
         }
     }
